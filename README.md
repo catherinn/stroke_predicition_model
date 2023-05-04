@@ -12,11 +12,11 @@ pip install -r requirements.txt
 ## Context
 According to the World Health Organisation (WHO), stroke is the 2nd leading cause of death globally, responsible for approximately 11% of total deaths.
 
-## Scope:
+## Scope
 This repository contains the code to build a ML model that is able to predict whether a patient is likely to get a stroke based on input parameters like gender, age, various diseases and smoking status. 
 
 
-## Dataset used:
+## Dataset used
 You can find the original dataset in the stroke_data.csv file. The data contains information about:
 1) id: unique patient identifier
 2) gender: “Male”, “Female” or “Other”
