@@ -9,12 +9,11 @@ pip install -r requirements.txt
 ```
 
 
-## Context:
+## Context
 According to the World Health Organisation (WHO), stroke is the 2nd leading cause of death globally, responsible for approximately 11% of total deaths.
 
-## Goal:
-The purpose of this project is to build a ML model that is able to predict whether a patient is likely to get a stroke based on input parameters like gender, age, various diseases and smoking status. 
-The stroke_data.iopybm notebook contains all the code
+## Scope:
+This repository contains the code to build a ML model that is able to predict whether a patient is likely to get a stroke based on input parameters like gender, age, various diseases and smoking status. 
 
 
 ## Dataset used:
