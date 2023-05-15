@@ -1,7 +1,7 @@
 # stroke_prediction_model
 
 ## Installation (local)
-* Activate a virtual environment (this version was tested with python xy)
+* Activate a virtual environment 
 * Install requirements
 
 ```
