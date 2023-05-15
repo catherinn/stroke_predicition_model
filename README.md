@@ -13,7 +13,7 @@ pip install -r requirements.txt
 According to the World Health Organisation (WHO), stroke is the 2nd leading cause of death globally, responsible for approximately 11% of total deaths.
 
 ## Scope
-This repository contains the code to data analysis of underlying factors that lead up to stroke and ML model that is able to predict whether a patient is likely to get a stroke based on input parameters like gender, age, various diseases and smoking status. 
+This repository contains the code to data analysis of underlying factors that lead up to stroke and finding a ML model that is able to predict whether a patient is likely to get a stroke based on input parameters like gender, age, various diseases and smoking status. The focus is on trying out different techniques.
 
 
 ## Dataset used
