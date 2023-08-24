@@ -1,8 +1,9 @@
 # stroke_prediction_model
 
 ## Installation (local)
-* install Rstudio - the analysis was done with version RStudio Version 2023.03.0+386
-* install the packages as defined in the .rmd file
+* Activate a virtual environment 
+* Install requirements
+
 ```
 pip install -r requirements.txt
 ```
@@ -33,30 +34,37 @@ this case the information for the patient is not available)
 
 
 ## Proposed algorithms
-
 Various algorithms and feature engineering and selection techniques were used in the notebook:
 
-**Main techniques and algorithms used:**
-  * Exploratory Data Analysis: The analysis includes several visualizations and summaries to understand the data and relationships between variables
-  * Survival analysis: Computing and plotting the survival and hazard functions incl comparing multiple groups
-  * Univariate and multivariate Cox Model
+**Main classification algorithms:**
+  * Logistic Regression
+  * Multilayer Perceptron
+  * Decision Tree
+  * Random Forest
+  * K-nearest Neighbours
+  * Support Vector Classification
+  * Gaussian Naive Bayes 
+  * AdaBoost 
+  * GradBoost
+  * XGBoost
+
+**Techniques and experiments:**
+  * pipelines 
+  * ColumnTransformer with separate dealing with categorical and numerical data
+  * sample balancing techniques (SMOTE, underbalancing)
+  * various scalers (MinMaxScaler, StandardScaler, RobustScaler)
+  * validation and testing techniques: cross-validation on training set with ROC AUC; classification report, confusion matrix on testing set
+  * PCA
+  * manual outlier removal
+  * GriDSearchCV hyperparameter tuning on 2 best performing models (Logistic Regression, SVC)
 
 
 ## Conclusion
-After the analysis, we can get the following conclusions:
-1)	The dataset contains information about various variables, including the number of investigators, funding awarded, funding years, estimated sample size, time to protocol paper publication, event of protocol paper publication, time to main paper publication, and event of main paper publication. The dataset consists of 74 observations.
-2)	The data was relatively clean, but some steps were required to handle missing values and convert certain variables from character to numeric format (estimatedSampleSize).
-3)	Exploratory Data Analysis: The analysis includes several visualizations and summaries to understand the data and relationships between variables. We can say that there is homogenous correlation between almost all variables.
-4)	The publication of a protocol paper does not seem to have a significant impact to the main event.
-5)	Survival analysis techniques were applied to understand the time to chance of main event (i.e. publication of the main paper) and the factors influencing it. We notice that:
-   *	The survival function indicates that only 50% of the sample publishes a paper within the observed time. The hazard function provides the instantaneous probability of publishing a paper at any given time.
-   *	The impact of individual covariates on the main event was assessed using univariate Cox models. Only fundingYears was shown to have a significant impact.
-   *	A multivariate Cox model was built, including fundingYears, timeToProtocol and eventProtocol. These variables remained significant, indicating that longer fundingYears, longer timeToProtocol, and negative eventProtocol increase the risk of not publishing a main paper.
-   * FundingYears, timeToProtocol, and eventProtocol have were shown to have significant impact on the main event.
-   * Longer FundingYears, timeToProtocol are associated with a decreased likelihood of publishing a main paper.
-   * The publication of a protocol paper seems to have a positive impact on the likelihood of publishing a main paper, although results are not statistically significant.
-   * The number of investigators, the amount of the funding awarded, and the estimated sample size did not show a significant impact on the time to main event.
+The best performing model achieved was Logistic Regression with 0.84 accuracy (ROC AUC). 
+While the initial models have achieved higher accuracy (around 0.95), due to the highly imbalanced character of the dataset (minority for stroke == 1), these models are tuned to predict stroke == 0. However, they perform very poorly for stroke == 1 which is the goal of this study. 
 
+The model that I have reached is still weak and is not usable in commercial usage. It has been tuned for achieving as good predictions for stroke == 1 as possible, specifically focusing on recall. I consider the of false negatives (predicting no stroke when it should be yes) much higher than for false positives (predicting stroke when there is none) as focusing on prevention and regular check ups is not causing any harm, while not predicting a stroke has severe consequences.
+
+The overall conclusion and so the ultimate next step would be to collect further samples of patients with stroke == 1 as the sample given is highly imbalanced and only contains 249 samples for stroke == 1. As our goal is to predict when a person will get stroke, this is definitely not enough to build a high accuracy model.
 
 ## References
-The original paper on the topic: https://bmjopen.bmj.com/content/7/3/e012212x`
